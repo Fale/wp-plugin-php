@@ -50,6 +50,7 @@ function php_exec_process($phpexec_text) {
   // capture the tags as well as in between
   $phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); 
   $phpexec_stop = count($phpexec_textarr);// loop stuff
+  $phpexec_output = "";
   for ($phpexec_i = 0; $phpexec_i < $phpexec_stop; $phpexec_i++) {
     $phpexec_content = $phpexec_textarr[$phpexec_i];
     if (preg_match("/^<phpcode>(.*)<\\/phpcode>/Us", $phpexec_content, $phpexec_code)) { // If it's a phpcode	
