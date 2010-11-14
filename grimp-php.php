@@ -47,7 +47,8 @@ function php_exec_process($phpexec_text) {
   if(author_can(get_the_ID(),"unfiltered_html"))
     $phpexec_doeval = true;
 
-  $phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
+  // capture the tags as well as in between
+  $phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); 
   $phpexec_stop = count($phpexec_textarr);// loop stuff
   for ($phpexec_i = 0; $phpexec_i < $phpexec_stop; $phpexec_i++) {
     $phpexec_content = $phpexec_textarr[$phpexec_i];
@@ -57,12 +58,10 @@ function php_exec_process($phpexec_text) {
         ob_start();
         eval("?>". $phpexec_php . "<?php ");
         $phpexec_output .= ob_get_clean();
-      } else {
+      } else
         $phpexec_output .= htmlspecialchars($phpexec_php);
-      }
-    } else {
+    } else
       $phpexec_output .= $phpexec_content;
-    }
   }
   return $phpexec_output;
 }
