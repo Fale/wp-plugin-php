@@ -44,7 +44,7 @@ function php_exec_post($text) {
 
 ### main routine ###
 function php_exec_process($phpexec_text) {
-  if(auhor_can(get_the_ID(),"unfiltered_html"))
+  if(author_can(get_the_ID(),"unfiltered_html"))
     $phpexec_doeval = true;
 
   $phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
