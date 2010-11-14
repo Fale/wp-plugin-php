@@ -18,6 +18,7 @@ Inspired by runphp plugin by Mark Somerville
 function php_exec_pre($text) {
   $textarr = preg_split("/(<\\?php.*\\?>)/Us", $text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
   $stop = count($textarr);// loop stuff
+  $output = "";
   for ($phpexec_i = 0; $phpexec_i < $stop; $phpexec_i++) {
     $content = $textarr[$phpexec_i];
     if (preg_match("/^<\\?php(.*)\\?>/Us", $content, $code)) { // If it's a phpcode	
@@ -32,6 +33,7 @@ function php_exec_pre($text) {
 function php_exec_post($text) {
   $textarr = preg_split("/(\\[phpcode\\].*\\[\\/phpcode\\])/Us", $text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
   $stop = count($textarr);// loop stuff
+  $output = "";
   for ($phpexec_i = 0; $phpexec_i < $stop; $phpexec_i++) {
     $content = $textarr[$phpexec_i];
     if (preg_match("/^\\[phpcode\\](.*)\\[\\/phpcode\\]/Us", $content, $code)) { // If it's a phpcode
