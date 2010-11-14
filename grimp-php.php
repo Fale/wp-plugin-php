@@ -16,12 +16,12 @@ Inspired by runphp plugin by Mark Somerville
 
 ### mask code before going to the nasty balanceTags ###
 function php_exec_pre($text) {
-  $textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
+  $textarr = preg_split("/(<\\?php.*\\?>)/Us", $text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
   $stop = count($textarr);// loop stuff
   for ($phpexec_i = 0; $phpexec_i < $stop; $phpexec_i++) {
     $content = $textarr[$phpexec_i];
-    if (preg_match("/^<phpcode>(.*)<\\/phpcode>/Us", $content, $code)) { // If it's a phpcode	
-      $content = '[phpcode]' . base64_encode($code[1]) . '[/phpcode]';
+    if (preg_match("/^<\\?php(.*)\\?>/Us", $content, $code)) { // If it's a phpcode	
+      $content = '[phpcode]' . base64_encode("<?php" . $code[1] . "?>") . '[/phpcode]';
     }
     $output .= $content;
   }
