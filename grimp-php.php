@@ -3,7 +3,7 @@
 /*
 Plugin Name: Grimp-PHP
 Plugin URI: http://git.grimp.eu
-Description: Execute PHP Code inside a post. Do NOT use this plugin if you don't trust your WP users.
+Description: Grimp-PHP allows you to use php code (syntax: <?php {code} ?>) in your posts/pages, if you have the "unfiltered_html" capability.
 Version: 0.1
 Author: Fabio Alessandro Locati
 Author URI: http://grimp.eu
