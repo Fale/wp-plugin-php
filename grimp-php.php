@@ -44,10 +44,8 @@ function php_exec_post($text) {
 
 ### main routine ###
 function php_exec_process($phpexec_text) {
-	$phpexec_userdata = get_userdatabylogin(the_author('login',false));
-	if($phpexec_userdata->user_level >= php_exec_getuserlevel()){
+	if(auhor_can(get_the_ID(),"unfiltered_html"))
 		$phpexec_doeval = true;
-	}
 
 	$phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); // capture the tags as well as in between
 	$phpexec_stop = count($phpexec_textarr);// loop stuff
