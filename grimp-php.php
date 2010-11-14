@@ -67,46 +67,6 @@ function php_exec_process($phpexec_text) {
 	return $phpexec_output;
 }
 
-function php_exec_options() {
-	if($_POST['php_exec_save']){
-		update_option('php_exec_userlevel',$_POST['php_exec_userlevel']);
-		echo '<div class="updated"><p>User level saved successfully.</p></div>';
-	}
-
-	?>
-	<div class="wrap">
-	<h2>PHPExec Options</h2>
-	<form method="post" id="php_exec_options">
-		<fieldset class="options">
-		<legend>Minimum User Level</legend>
-		<table width="100%" cellspacing="2" cellpadding="5" class="editform"> 
-			<tr valign="top"> 
-				<th width="33%" scope="row">User Level:</th> 
-				<td><input name="php_exec_userlevel" type="text" id="php_exec_userlevel" value="<?php echo get_option('php_exec_userlevel') ;?>" size="2" maxlength="1" />
-				<br />Sets the minimum level to allow users to run PHP code in posts. If option is not set, then defaults to 9.</td> 
-			</tr>
-		</table>
-		<p class="submit"><input type="submit" name="php_exec_save" value="Save" /></p>
-		</fieldset>
-	</form>
-	</div>
-	<?php
-}
-
-function php_exec_adminmenu(){
-	add_options_page('PHPExec Options', 'PHPExec', 9, 'phpexec.php', 'php_exec_options');
-}
-
-function php_exec_getuserlevel(){
-	if($level = get_option('php_exec_userlevel')){
-		return $level;
-	} else {
-		return 9;
-	}
-}
-
-add_action('admin_menu','php_exec_adminmenu',1);
-
 add_filter('content_save_pre', 'php_exec_pre', 29);
 add_filter('content_save_pre', 'php_exec_post', 71);
 add_filter('the_content', 'php_exec_process', 2);
