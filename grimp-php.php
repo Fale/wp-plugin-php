@@ -1,16 +1,15 @@
 <?php
 
 /*
-Plugin Name: PHP Exec
-Plugin URI: http://priyadi.net/archives/2005/03/02/wordpress-php-exec-plugin/
+Plugin Name: Grimp-PHP
+Plugin URI: http://git.grimp.eu
 Description: Execute PHP Code inside a post. Do NOT use this plugin if you don't trust your WP users.
-Version: 1.7
-Author: Priyadi Iman Nurcahyo
-Author URI: http://priyadi.net/
+Version: 0.1
+Author: Fabio Alessandro Locati
+Author URI: http://grimp.eu
 
-
+Inspired by Exec PHP by Priyadi Iman Nurcahyo
 Inspired by runphp plugin by Mark Somerville
-http://mark.scottishclimbs.com/archives/2004/07/02/running-php-in-wordpress-posts/
 */
 
 
