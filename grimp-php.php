@@ -21,7 +21,7 @@ function php_exec_pre($text) {
   for ($phpexec_i = 0; $phpexec_i < $stop; $phpexec_i++) {
     $content = $textarr[$phpexec_i];
     if (preg_match("/^<\\?php(.*)\\?>/Us", $content, $code)) { // If it's a phpcode	
-      $content = '[phpcode]' . base64_encode("<?php" . $code[1] . "?>") . '[/phpcode]';
+      $content = '[phpcode]' . base64_encode($code[1]) . '[/phpcode]';
     }
     $output .= $content;
   }
@@ -35,7 +35,7 @@ function php_exec_post($text) {
   for ($phpexec_i = 0; $phpexec_i < $stop; $phpexec_i++) {
     $content = $textarr[$phpexec_i];
     if (preg_match("/^\\[phpcode\\](.*)\\[\\/phpcode\\]/Us", $content, $code)) { // If it's a phpcode
-      $content = '<phpcode>' . base64_decode($code[1]) . '</phpcode>';
+      $content = '<?php' . base64_decode($code[1]) . '?>';
     }
     $output .= $content;
   }
@@ -48,16 +48,16 @@ function php_exec_process($phpexec_text) {
     $phpexec_doeval = true;
 
   // capture the tags as well as in between
-  $phpexec_textarr = preg_split("/(<phpcode>.*<\\/phpcode>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); 
+  $phpexec_textarr = preg_split("/(<\\?php.*\\?>)/Us", $phpexec_text, -1, PREG_SPLIT_DELIM_CAPTURE); 
   $phpexec_stop = count($phpexec_textarr);// loop stuff
   $phpexec_output = "";
   for ($phpexec_i = 0; $phpexec_i < $phpexec_stop; $phpexec_i++) {
     $phpexec_content = $phpexec_textarr[$phpexec_i];
-    if (preg_match("/^<phpcode>(.*)<\\/phpcode>/Us", $phpexec_content, $phpexec_code)) { // If it's a phpcode	
+    if (preg_match("/^<\\?php(.*)\\?>/Us", $phpexec_content, $phpexec_code)) { // If it's a phpcode	
       $phpexec_php = $phpexec_code[1];
       if ($phpexec_doeval) {
         ob_start();
-        eval("?>". $phpexec_php . "<?php ");
+        eval($phpexec_php);
         $phpexec_output .= ob_get_clean();
       } else
         $phpexec_output .= htmlspecialchars($phpexec_php);
