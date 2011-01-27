@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Grimp-PHP
+Plugin Name: Grimp - PHP
 Plugin URI: http://git.grimp.eu
 Description: Grimp-PHP allows you to use php code (syntax: &#60;?php {code} ?&#62;) in your posts/pages, if you have the "unfiltered_html" capability.
 Version: 0.1
@@ -13,7 +13,7 @@ Inspired by Exec PHP by Priyadi Iman Nurcahyo
 Inspired by runphp plugin by Mark Somerville
 */
 
-/*  Copyright 2010-2011 Grimp di Fabio Alessandro Locati  (email : legal@grimp.eu)
+/*  Copyright 2010-2011 Grimp di Fabio Alessandro Locati (email: legal@grimp.eu)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
