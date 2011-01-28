@@ -2,15 +2,12 @@
 
 /*
 Plugin Name: Grimp - PHP
-Plugin URI: http://git.grimp.eu
-Description: Grimp-PHP allows you to use php code (syntax: &#60;?php {code} ?&#62;) in your posts/pages, if you have the "unfiltered_html" capability.
+Plugin URI: http://git.grimp.eu/?p=wpp-php.git
+Description: This plugin allows you to use php code (syntax: &#60;?php {code} ?&#62;) in your posts/pages, if you have the "unfiltered_html" capability.
 Version: 0.1
-Author: Fabio Alessandro Locati
+Author: Grimp di Fabio Alessandro Locati
 Author URI: http://grimp.eu
-License: GPL2
-
-Inspired by Exec PHP by Priyadi Iman Nurcahyo
-Inspired by runphp plugin by Mark Somerville
+License: GPLv2
 */
 
 /*  Copyright 2010-2011 Grimp di Fabio Alessandro Locati (email: legal@grimp.eu)
